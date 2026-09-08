@@ -24,7 +24,68 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+`A2pcej.conv_al` converts alphabetic characters into English phonetic code, and `A2pcej.conv_ak` converts them into Japanese katakana phonetic code.
+
+### Method signatures
+
+```ruby
+A2pcej.conv_al(letters, delimiter: '-', sign: '(CAPS)', num: false)
+A2pcej.conv_ak(letters, delimiter: '・', sign: '（大文字）', num: false)
+```
+
+`letters` must be a string.
+
+### Basic examples
+
+First, require the gem:
+
+```ruby
+require 'a2pcej'
+```
+
+Convert `examples` to English phonetic code:
+
+```ruby
+A2pcej.conv_al('examples')
+# => "Echo-Xray-Alfa-Mike-Papa-Lima-Echo-Sierra"
+```
+
+Convert `examples` to Japanese katakana phonetic code:
+
+```ruby
+A2pcej.conv_ak('examples')
+# => "イー・エクス・エイ・エム・ピー・エル・イー・エス"
+```
+
+Non-alphabet characters are left unchanged by default. Uppercase letters are marked with the default sign.
+
+```ruby
+A2pcej.conv_al('Examples002')
+# => "Echo(CAPS)-Xray-Alfa-Mike-Papa-Lima-Echo-Sierra-0-0-2"
+
+A2pcej.conv_ak('Examples002')
+# => "イー（大文字）・エクス・エイ・エム・ピー・エル・イー・エス・0・0・2"
+```
+
+You can change the delimiter and the uppercase sign.
+
+```ruby
+A2pcej.conv_al('Examples003', delimiter: ', ', sign: '(CAPITAL)')
+# => "Echo(CAPITAL), Xray, Alfa, Mike, Papa, Lima, Echo, Sierra, 0, 0, 3"
+
+A2pcej.conv_ak('Examples003', delimiter: '／', sign: '(大)')
+# => "イー(大)／エクス／エイ／エム／ピー／エル／イー／エス／0／0／3"
+```
+
+If you want to convert numbers to phonetic code, set `num: true`.
+
+```ruby
+A2pcej.conv_al('Examples004', num: true)
+# => "Echo(CAPS)-Xray-Alfa-Mike-Papa-Lima-Echo-Sierra-zero-zero-four"
+
+A2pcej.conv_ak('Examples004', num: true)
+# => "イー（大文字）・エクス・エイ・エム・ピー・エル・イー・エス・ゼロ・ゼロ・ヨン"
+```
 
 ## Development
 
