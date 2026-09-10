@@ -22,7 +22,7 @@ RSpec.describe A2pcej do
         ['Examples004', 'Echo(CAPS)-Xray-Alfa-Mike-Papa-Lima-Echo-Sierra-zero-zero-four', {'num': true}]
       ]
       vaild_values.each do |input_value, expect_value, opt|
-        it { expect(A2pcej.conv_al(input_value)).to eq expect_value }
+        it { expect(A2pcej.conv_al(input_value, **opt)).to eq expect_value }
       end
     end
   end
@@ -46,7 +46,7 @@ RSpec.describe A2pcej do
         ['Examples004', 'イー（大文字）・エクス・エイ・エム・ピー・エル・イー・エス・ゼロ・ゼロ・ヨン', {'num': true}]
       ]
       vaild_values.each do |input_value, expect_value, opt|
-        it { expect(A2pcej.conv_ak(input_value)).to eq expect_value }
+        it { expect(A2pcej.conv_ak(input_value, **opt)).to eq expect_value }
       end
     end
   end

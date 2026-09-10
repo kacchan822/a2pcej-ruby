@@ -85,11 +85,24 @@ module A2pcej
                 "キュウ"
             ],
         }
+
+        DEFAULTS = {
+            "en" => {
+                delimiter: "-",
+                sign: "(CAPS)",
+            },
+            "ja" => {
+                delimiter: "・",
+                sign: "（大文字）",
+            },
+        }
     
         def get_phonetics(lang)
             {
                 alphabet: get_alphabet_dict(lang),
                 number: get_number_dict(lang),
+                delimiter: DEFAULTS.fetch(lang)[:delimiter],
+                sign: DEFAULTS.fetch(lang)[:sign],
             }
         end
         
