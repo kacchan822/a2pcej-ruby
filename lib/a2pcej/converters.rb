@@ -16,9 +16,11 @@ module A2pcej
       convert_letter(letter, phonetics, sign, num)
     end.join(delimiter)
   end
+
+  private_class_method :convert
+
   class << self
     private
-
     def convert_letter(letter, phonetics, sign, num)
       if phonetics[:alphabet].key?(letter.upcase)
         converted = phonetics[:alphabet][letter.upcase]
